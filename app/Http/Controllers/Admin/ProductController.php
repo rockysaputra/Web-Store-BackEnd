@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use App\Product;
+use App\User;
+use App\Category;
+
 
 use Illuminate\Http\Request;
 
@@ -67,7 +70,13 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('pages.admin.product.create');
+        $users = User::all();
+        $categories = Category::all();
+
+        return view('pages.admin.product.create',[
+            'users' => $users,
+            'categories' => $categories
+        ]);
     }
 
     /**
