@@ -8,7 +8,6 @@ use App\Product;
 use App\User;
 use App\Category;
 
-
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Storage;
@@ -89,7 +88,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $data['password'] = bcrypt($request->password);   //melindungi password agar tidak terlihat dengan bycrypt
+        $data['slug'] = Str::slug($request->name);
 
         Product::create($data);
 
