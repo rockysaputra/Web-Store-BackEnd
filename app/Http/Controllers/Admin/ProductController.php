@@ -27,8 +27,8 @@ class ProductController extends Controller
   public function index()
     {
         if (request()->ajax()) {
-            $query = Product::with(['user','category']);
-
+            $query = Product::with(['user','category']); 
+            // withTrashed() jika data yang di hapus tetap ingin di munculkan
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
